@@ -51,7 +51,6 @@ html, body{
 }
 .button:hover{
     background-color: rgba(36, 83, 35, 1);
-
 }
 .button p{
     font-size: 24px;
