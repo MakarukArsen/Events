@@ -1,11 +1,20 @@
-const buttons = document.querySelector(".buttons");
-console.log(buttons);
-
+const buttonsGroup = document.querySelector(".buttons");
+const buttonsColection = buttonsGroup.querySelectorAll(".button");
 function playSound(target){
-    const mp3 = new Audio(`./sounds/${target}.mp3`);
+    const mp3 = document.querySelector(`audio[data-key="${target}"]`);
+    if(!mp3) return;
     mp3.play();
 }
-buttons.addEventListener("click", (e) => {
+document.addEventListener("keyup", (e) => {
+    const btn = document.getElementById(e.keyCode);
+    if(btn == null) return;
+    btn.classList.add("_active");
+    setTimeout(() => {
+        btn.classList.remove("_active");
+    }, 500);
+    playSound(e.keyCode);
+});
+buttonsGroup.addEventListener("click", (e) => {
     const target = e.target.closest(".button").id;
     if(e.target.closest(".button")){
         playSound(target);

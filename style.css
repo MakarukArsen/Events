@@ -49,6 +49,10 @@ html, body{
     justify-content: center;
     transition: ease 0.2s;
 }
+._active{
+    background-color: rgba(36, 83, 35, 1);
+    transform: translateY(-30px);
+}
 .button:hover{
     background-color: rgba(36, 83, 35, 1);
 }
