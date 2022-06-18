@@ -5,18 +5,21 @@ function playSound(target){
     if(!mp3) return;
     mp3.play();
 }
-document.addEventListener("keyup", (e) => {
-    const btn = document.getElementById(e.keyCode);
+function makeActive(target){
+    const btn = document.getElementById(target);
     if(btn == null) return;
     btn.classList.add("_active");
     setTimeout(() => {
         btn.classList.remove("_active");
     }, 500);
+}
+document.addEventListener("keyup", (e) => {
+    makeActive(e.keyCode);
     playSound(e.keyCode);
 });
 buttonsGroup.addEventListener("click", (e) => {
-    const target = e.target.closest(".button").id;
+    makeActive(e.target.id);
     if(e.target.closest(".button")){
-        playSound(target);
+        playSound(e.target.id);
     }
 });
