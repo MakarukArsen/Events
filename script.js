@@ -18,8 +18,9 @@ document.addEventListener("keyup", (e) => {
     playSound(e.keyCode);
 });
 buttonsGroup.addEventListener("click", (e) => {
-    makeActive(e.target.id);
     if(e.target.closest(".button")){
-        playSound(e.target.id);
-    }
+        const clickedBtn = e.target.closest(".button").id;
+        makeActive(clickedBtn);
+        playSound(clickedBtn);
+    } else return;
 });
